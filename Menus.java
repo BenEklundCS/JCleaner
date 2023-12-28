@@ -1,31 +1,28 @@
+package com.beneklund.jcleaner;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Menus {
 
-    private Automations auto = new Automations();
+    private IO io;
+    private Automations auto = new Automations(io); // Construct automations with IO dependancy injection
 
-    // Singleton design pattern
-
-    private static Menus instance = null; 
-
-    public static synchronized Menus getInstance()
-    {
-        if (instance == null)
-            instance = new Menus();
- 
-        return instance;
+    public Menus(IO io) {
+        this.io = io;
     }
 
     public void mainMenu() {
+
         ArrayList<String> options = new ArrayList<String>(Arrays.asList("0", "1", "2", "3"));
+        
         System.out.println();
-        System.out.println("0. Dummy");
+        System.out.println("0. Dummy"); // For test input that performs no real action
         System.out.println("1. Clear desktop");
         System.out.println("2. Empty downloads folder");
         System.out.println("3. Exit program");
         System.out.println();
-        IO io = IO.getInstance();
+
         String userInput = io.getValidatedInput(options);
         
         switch (userInput) {

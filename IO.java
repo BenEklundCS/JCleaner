@@ -1,6 +1,9 @@
+package com.beneklund.jcleaner;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class IO {
     private Scanner scanner = new Scanner(System.in);
@@ -26,6 +29,7 @@ public class IO {
         String result;
         do {
             System.out.println(prompt);
+            System.out.print("> ");
             result = getInput();
             prompt = "Invalid option, please try again: ";
 
@@ -52,13 +56,22 @@ public class IO {
         }
     }
 
-    public void deleteFilesAtDir(String path) {
+    public int deleteFilesAtDir(String path) { // Returns the number of deleted files
+
+        int count = 0;
 
         File[] files = getFileList(path);
-
+        
         for (File f : files) {
-            f.delete();
+            if (!f.delete()) {
+                System.out.println("Did not delete " + f.getName());
+            }
+            else {
+                count++;
+            }
         }
+
+        return count;
     }
 
     // Pathing

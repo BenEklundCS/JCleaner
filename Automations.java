@@ -1,12 +1,34 @@
+package com.beneklund.jcleaner;
+
 public class Automations {
-    public void clearDesktop() {
-        IO io = IO.getInstance();
-        String path = io.getDesktopPath();
-        io.deleteFilesAtDir(path);
+
+    private final IO io;
+
+    public Automations(IO io) {
+        this.io = io;
     }
+
+    public void clearDesktop() {
+        String path = io.getDesktopPath();
+        int deleted = io.deleteFilesAtDir(path);
+
+        if (deleted > 0) {
+            System.out.println("Deleted " + deleted + " files successfully.");
+        }
+        else {
+            System.out.println("Did not delete any files.");
+        }
+    }
+
     public void emptyDownloads() {
-        IO io = IO.getInstance();
         String path = io.getDownloadsPath();
-        io.deleteFilesAtDir(path);
+        int deleted = io.deleteFilesAtDir(path);
+
+        if (deleted > 0) {
+            System.out.println("Deleted " + deleted + " files successfully.");
+        }
+        else {
+            System.out.println("Did not delete any files.");
+        }
     }
 }

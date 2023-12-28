@@ -1,5 +1,8 @@
+package com.beneklund.jcleaner;
+
 class JCleaner {
-    private static Menus menu = Menus.getInstance();
+    private static IO io = IO.getInstance();
+    private static Menus menu = new Menus(io);
 
     public static void main(String[] args) {
         // Loop until explicit user exit
@@ -8,3 +11,5 @@ class JCleaner {
         }
     }
 }
+
+
