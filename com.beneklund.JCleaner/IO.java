@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 public class IO {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     // Singleton design pattern (also ensures I only have one Scanner instance)
 
@@ -46,8 +46,7 @@ public class IO {
 
     public File[] getFileList(String path) {
         File directory = new File(path);
-        File[] result = directory.listFiles();
-        return result;
+        return directory.listFiles();
     }
 
     public void printFileList(File[] files) {
@@ -70,17 +69,20 @@ public class IO {
                 count++;
             }
         }
-
         return count;
     }
 
     // Pathing
 
     public String getDesktopPath() {
-        return System.getProperty("user.home") + "/Desktop";
+        return getUserHome() + "/Desktop";
     }
 
     public String getDownloadsPath() {
-        return System.getProperty("user.home") + "/Downloads";
+        return getUserHome() + "/Downloads";
+    }
+
+    private String getUserHome() {
+        return System.getProperty("user.home");
     }
 }

@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Menus {
 
     private IO io;
-    private Automations auto = new Automations(io); // Construct automations with IO dependancy injection
+    private final Automations auto = new Automations(io); // Construct automations with IO dependancy injection
 
     public Menus(IO io) {
         this.io = io;
