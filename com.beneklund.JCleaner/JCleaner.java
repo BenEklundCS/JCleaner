@@ -1,4 +1,4 @@
-package com.beneklund.jcleaner;
+package com.beneklund.JCleaner;
 
 class JCleaner {
     private static IO io = IO.getInstance();

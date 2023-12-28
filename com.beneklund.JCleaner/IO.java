@@ -1,4 +1,4 @@
-package com.beneklund.jcleaner;
+package com.beneklund.JCleaner;
 
 import java.io.File;
 import java.util.ArrayList;

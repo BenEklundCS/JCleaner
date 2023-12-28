@@ -1,4 +1,4 @@
-package com.beneklund.jcleaner;
+package com.beneklund.JCleaner;
 
 public class Automations {
 
